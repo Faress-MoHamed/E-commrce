@@ -14,7 +14,7 @@ const Navbar = memo(() => {
 			<div className="container">
 				<div className="logo">
 					<img
-						src="./assets/images/logo.png"
+						src="./images/logo.png"
 						alt="logo"
 						width={100}
 						height={100}
