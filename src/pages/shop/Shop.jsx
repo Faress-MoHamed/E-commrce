@@ -10,7 +10,6 @@ import {
 	getAllCatgorise,
 } from "../../reduxToolkit/slices/GetAllProducts";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Helmet } from "react-helmet";
 
 const Shop = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -29,9 +28,6 @@ const Shop = () => {
 	}, [activeTitle, dispatch]);
 	return (
 		<main className="shop">
-			<Helmet>
-				<title>Home page</title>
-			</Helmet>
 			<BreadCrumbs />
 			<HeadLines subTitle={"Shop by category"} title={"Shop by category"} />
 			<div className="filter--category">
