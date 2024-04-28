@@ -7,9 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Card = ({ data }) => {
 	const dispatch = useDispatch();
-	const img =
-		
-		data?.image?.data?.attributes.url;
+	const img = data?.image?.data?.attributes.url;
 	function handleClick() {
 		const newItem = {
 			name: data?.name,

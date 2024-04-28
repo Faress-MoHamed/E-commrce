@@ -6,6 +6,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
 	const data = useLoaderData();
+
 	return (
 		<>
 

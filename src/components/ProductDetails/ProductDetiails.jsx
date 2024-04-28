@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { getProductDetails } from "../../reduxToolkit/slices/GetAllProducts";
 import toast from "react-hot-toast";
 import { AddCart } from "../../reduxToolkit/slices/CartSlice";
+import LazyLoad from "react-lazyload";
 
 const ProductDetiails = () => {
 	const { slug } = useParams();
@@ -45,7 +46,9 @@ const ProductDetiails = () => {
 			<HeadLines title={product?.name} />
 			<div className="productDetails--container">
 				<div className="productDetails--image">
-					<img src={img} alt="" />
+					<LazyLoad height={200} offset={100}>
+						<img  src={img} alt="product" />
+					</LazyLoad>
 				</div>
 				<div className="productDetails--content">
 					<h4>{product?.name}</h4>

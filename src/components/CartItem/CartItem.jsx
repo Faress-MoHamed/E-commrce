@@ -4,10 +4,10 @@ import {
 	decreaseItemQuantity,
 	increaseItemQuantity,
 } from "../../reduxToolkit/slices/CartSlice";
+import LazyLoad from "react-lazyload";
 
 const CartItem = ({ data }) => {
 	const dispatch = useDispatch();
-	
 
 	const handleIncrease = () => {
 		dispatch(increaseItemQuantity(data?.slug));
@@ -20,7 +20,9 @@ const CartItem = ({ data }) => {
 		<div className="cartbox-item">
 			<div className="item">
 				<div className="cartbox--image">
-					<img src={data?.img} alt={data?.description} />
+					<LazyLoad height={200} offset={100}>
+						<img  src={data?.img} alt={data?.description} />
+					</LazyLoad>
 				</div>
 				<div className="cartbox--description">
 					<h4 className="cartbox--name">{data?.name}</h4>

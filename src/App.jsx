@@ -18,8 +18,8 @@ import { Toaster } from "react-hot-toast";
 const App = () => {
 	const dispatch = useDispatch();
 	const getAll = async () => {
-		const products = await dispatch(getAllProduct());
-		return products.payload;
+		const product = await dispatch(getAllProduct());
+		return product.payload;
 	};
 
 	const Routing = createBrowserRouter([

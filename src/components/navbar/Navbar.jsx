@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { MobileHandlerContext } from "../../utils/mobileHandler";
 import { useSelector } from "react-redux";
 
-const Navbar = () => {
+const Navbar = memo(() => {
 	const { Cart } = useSelector((store) => store.Cart);
 
 	const { isMobile, openMenu, setOpenMenu } = useContext(MobileHandlerContext);
@@ -52,6 +52,6 @@ const Navbar = () => {
 			</div>
 		</nav>
 	);
-};
+});
 
 export default Navbar;

@@ -22,7 +22,7 @@ const FilterCategoryItem = ({ data, id, activeIndex }) => {
 						/>
 					</svg>
 				</div>
-				<img src={img} alt="filter--item" />
+				<img  src={img} alt="filter--item" />
 			</div>
 			<p className="filterItem--title">{title}</p>
 		</div>
