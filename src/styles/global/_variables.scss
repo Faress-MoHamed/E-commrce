@@ -17,7 +17,7 @@ $scrollbar-color: #666;
 	}
 	&::-webkit-scrollbar-thumb {
 		background-color: $scrollbar-thumb-color;
-		border-radius: $scrollbar-width / 2;
+		border-radius: calc($scrollbar-width / 2);
 	}
 }
 

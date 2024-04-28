@@ -4,7 +4,6 @@ import Card from "../card/Card";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Scrollbar } from "swiper/modules";
 import { MobileHandlerContext } from "../../utils/mobileHandler";
-import { useLoaderData } from "react-router-dom";
 
 const MostSelling = ({ productData }) => {
 	const { isMobile } = useContext(MobileHandlerContext);
