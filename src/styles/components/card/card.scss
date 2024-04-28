@@ -1,6 +1,6 @@
 .card {
 	// width: 23.8125rem;
-	height: 37.3125rem;
+	max-height: 37.3125rem;
 	border-radius: 1rem;
 	background: #1d1d1d;
 	padding: 0.94rem;
@@ -123,7 +123,7 @@
 			}
 		}
 		.hot-toast-container {
-			max-height: 200px; 
+			max-height: 200px;
 		}
 	}
 }
