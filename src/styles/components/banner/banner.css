@@ -1,0 +1,35 @@
+.hero-banner {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 100%), url(./assets/images/Hero-Banner.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero-banner .hero--content {
+  width: 70%;
+  margin: auto;
+}
+.hero-banner .hero--content .content h2 {
+  font-size: 96px;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.hero-banner .hero--content .content p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  font-weight: 500;
+  width: 70%;
+  margin: auto;
+}
+.hero-banner .hero--content .content .btn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.625rem;
+  border-radius: 26px;
+}/*# sourceMappingURL=banner.css.map */

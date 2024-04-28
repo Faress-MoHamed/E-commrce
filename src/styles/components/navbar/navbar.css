@@ -1,0 +1,10 @@
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 3.06rem;
+}/*# sourceMappingURL=navbar.css.map */

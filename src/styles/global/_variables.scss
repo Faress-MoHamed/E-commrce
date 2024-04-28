@@ -1,0 +1,30 @@
+$main-color: #d62828;
+$white: #fff;
+$secondray-color: #1d1d1d;
+
+// Define scrollbar styles
+$scrollbar-width: 4px;
+$scrollbar-thumb-color: $main-color;
+$scrollbar-color: #666;
+
+// Mixin for scrollbar
+@mixin custom-scrollbar {
+	&::-webkit-scrollbar {
+		width: $scrollbar-width;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: $scrollbar-color;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: $scrollbar-thumb-color;
+		border-radius: $scrollbar-width / 2;
+	}
+}
+
+// Apply the custom scrollbar mixin
+body {
+	@include custom-scrollbar;
+}
+* {
+	user-select: none;
+}

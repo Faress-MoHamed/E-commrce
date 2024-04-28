@@ -1,0 +1,43 @@
+.card {
+  width: 23.8125rem;
+  height: 37.3125rem;
+  background: #1d1d1d;
+  padding: 0.94rem;
+  border-radius: 1rem;
+}
+.card .image {
+  width: 100%;
+  height: 16.625rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.card .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.card .card--price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.44rem;
+}
+.card .card--price .price span {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card .card--price .rate {
+  display: flex;
+  align-items: center;
+  gap: 0.44rem;
+}
+.card .card--price .rate span {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.card .card--price .rate svg {
+  width: 1.45131rem;
+  height: 1.38906rem;
+  fill: gold;
+}/*# sourceMappingURL=card.css.map */
