@@ -20,9 +20,9 @@ const getAllProduct = createAsyncThunk("get-all-products", async () => {
 });
 const getProductDetails = createAsyncThunk("product-details", async (slug) => {
 	try {
-		const { data } = await axiosConfig({
-			url: `products?populate=*&filters[slug][$eq]=${slug}`,
-		});
+		const { data } = await axiosConfig(
+			`products?populate=*&filters[slug][$eq]=${slug}`
+		);
 		return data;
 	} catch (err) {
 		throw err;

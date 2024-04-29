@@ -6,35 +6,36 @@ import { useParams } from "react-router-dom";
 import { getProductDetails } from "../../reduxToolkit/slices/GetAllProducts";
 import toast from "react-hot-toast";
 import { AddCart } from "../../reduxToolkit/slices/CartSlice";
-import LazyLoad from "react-lazyload";
-
+// const fetcha = async (slug) => {
+// 	const data = await fetch(
+// 		`http://localhost:1337/api/products?populate=*&filters[slug][$eq]=${slug}`
+// 	);
+// 	return data;
+// };
 const ProductDetiails = () => {
 	const { slug } = useParams();
-	const dispatch = useDispatch();
 	const { productDetails } = useSelector((state) => state.products);
-	const data = productDetails?.data[0]?.attributes;
-	// console.log(productDetails);
+	// const data = productDetails?.data[0]?.attributes;
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getProductDetails(slug));
+	}, [slug, dispatch]);
 	function handleClick() {
 		const newItem = {
-			name: data?.name,
-			description: data?.description,
-			slug: data?.slug,
-			pieces: data?.pieces,
-			price: data?.price,
-			type: data?.type,
-			price_formatting: data?.price_formatting,
+			name: productDetails?.data[0]?.attributes?.name,
+			description: productDetails?.data[0]?.attributes?.description,
+			slug: productDetails?.data[0]?.attributes?.slug,
+			pieces: productDetails?.data[0]?.attributes?.pieces,
+			price: productDetails?.data[0]?.attributes?.price,
+			type: productDetails?.data[0]?.attributes?.type,
+			price_formatting: productDetails?.data[0]?.attributes?.price_formatting,
 			quantity: 1,
 			img,
 		};
-		console.log(newItem);
 		dispatch(AddCart(newItem));
 		toast.success("Add to Cart successfully");
 	}
-	const dispatct = useDispatch();
-
-	useEffect(() => {
-		dispatct(getProductDetails(slug));
-	}, [slug]);
 	let product;
 	if (productDetails && productDetails.data && productDetails.data.length > 0) {
 		product = productDetails?.data[0]?.attributes;
@@ -46,9 +47,7 @@ const ProductDetiails = () => {
 			<HeadLines title={product?.name} />
 			<div className="productDetails--container">
 				<div className="productDetails--image">
-					<LazyLoad height={200} offset={100}>
-						<img  src={img} alt="product" />
-					</LazyLoad>
+					<img src={img} alt="product" />
 				</div>
 				<div className="productDetails--content">
 					<h4>{product?.name}</h4>
