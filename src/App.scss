@@ -1,25 +1,24 @@
 // scss import
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import "./styles/global/variables";
-@import "./styles/components/navbar/navbar.scss";
-@import "./styles/components/cartItem/cartitem.scss";
-@import "./styles/components/mobileMenu/mobileMenu.scss";
-@import "./styles/components/banner/banner.scss";
-@import "./styles/components/mostselling/mostSelling.scss";
-@import "./styles/components/headlines/headlines.scss";
-@import "./styles/components/card/card.scss";
-@import "./styles/components/footer/footer.scss";
-@import "./styles/components/video/video.scss";
-@import "./styles/components/breadCrumb/breadCrumb.scss";
-@import "./styles/components/empty/empty.scss";
-@import "./styles/components/Error/Error.scss";
-@import "./styles/components/loadingPage/loadingPage.scss";
-@import "./styles/pages/shop/shop.scss";
-@import "./styles/pages/cart/cart.scss";
-@import "./styles/pages/notFound/notFound.scss";
-@import "./styles/pages/productDetails/ProductDetails.scss";
-@import "./styles/pages/about/about.scss";
+@import "./variables";
+@import "./components/navbar/navbar.scss";
+@import "./components/cartItem/cartitem.scss";
+@import "./components/mobileMenu/mobileMenu.scss";
+@import "./components/banner/banner.scss";
+@import "./components/mostselling/mostSelling.scss";
+@import "./components/headlines/headlines.scss";
+@import "./components/card/card.scss";
+@import "./components/footer/footer.scss";
+@import "./components/ShadowCard/ShadowCard.scss";
+@import "./components/video/video.scss";
+@import "./components/breadCrumbs/breadCrumb.scss";
+@import "./components/empty/empty.scss";
+@import "./components/loader/loadingPage.scss";
+@import "./pages/ProductDetails/ProductDetails.scss";
+@import "./pages/shop/shop.scss";
+@import "./pages/cart/cart.scss";
+@import "./pages/about/about.scss";
 
 // global style
 * {

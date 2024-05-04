@@ -1,26 +1,22 @@
-import React, { useEffect } from "react";
-import BreadCrumbs from "../breadCrumbs/BreadCrumbs";
-import HeadLines from "./../headLines/HeadLines";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductDetails } from "../../reduxToolkit/slices/GetAllProducts";
 import toast from "react-hot-toast";
 import { AddCart } from "../../reduxToolkit/slices/CartSlice";
-// const fetcha = async (slug) => {
-// 	const data = await fetch(
-// 		`http://localhost:1337/api/products?populate=*&filters[slug][$eq]=${slug}`
-// 	);
-// 	return data;
-// };
+import BreadCrumbs from "./../../components/breadCrumbs/BreadCrumbs";
+import HeadLines from "../../components/headLines/HeadLines";
+import { useQuery } from "@tanstack/react-query";
+
 const ProductDetiails = () => {
 	const { slug } = useParams();
-	const { productDetails } = useSelector((state) => state.products);
-	// const data = productDetails?.data[0]?.attributes;
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(getProductDetails(slug));
-	}, [slug, dispatch]);
+	let { isLoading, data: productDetails } = useQuery({
+		queryKey: ["productDetails"],
+		queryFn: () => dispatch(getProductDetails(slug)),
+	});
+	productDetails = productDetails?.payload;
+
 	function handleClick() {
 		const newItem = {
 			name: productDetails?.data[0]?.attributes?.name,
@@ -42,25 +38,27 @@ const ProductDetiails = () => {
 	}
 	const img = product?.image?.data?.attributes?.url;
 	return (
-		<section className="productDetails">
-			<BreadCrumbs />
-			<HeadLines title={product?.name} />
-			<div className="productDetails--container">
-				<div className="productDetails--image">
-					<img src={img} alt="product" />
-				</div>
-				<div className="productDetails--content">
-					<h4>{product?.name}</h4>
-					<p>{product?.description}</p>
-					<span>
-						{product?.price} {product?.price_formatting}
-					</span>
-					<div className="card--btn">
-						<button onClick={handleClick}>Add to cart</button>
+		!isLoading && (
+			<section className="productDetails">
+				<BreadCrumbs />
+				<HeadLines title={product?.name} />
+				<div className="productDetails--container">
+					<div className="productDetails--image">
+						{isLoading ? <p>loading...</p> : <img src={img} alt="product" />}
+					</div>
+					<div className="productDetails--content">
+						<h4>{product?.name}</h4>
+						<p>{product?.description}</p>
+						<span>
+							{product?.price} {product?.price_formatting}
+						</span>
+						<div className="card--btn">
+							<button onClick={handleClick}>Add to cart</button>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		)
 	);
 };
 

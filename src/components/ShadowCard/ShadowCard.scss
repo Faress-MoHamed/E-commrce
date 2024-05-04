@@ -1,0 +1,139 @@
+.shadow--card {
+	cursor: not-allowed;
+	width: 25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-height: 37.3125rem;
+	border-radius: 1rem;
+	background: #1d1d1d;
+	padding: 0.94rem;
+	position: relative;
+	padding-block-end: 3rem;
+	.shadow--image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 16.625rem;
+		border-radius: 1rem;
+		overflow: hidden;
+	}
+	.card--price {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 1.44rem;
+		position: relative;
+		.price {
+			span {
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: $main-color;
+			}
+		}
+		.rate {
+			display: flex;
+			align-items: center;
+			gap: 0.44rem;
+			span {
+				font-size: 1.5rem;
+				font-weight: 400;
+			}
+			svg {
+				width: 1.45131rem;
+				height: 1.38906rem;
+				fill: gold;
+			}
+		}
+		&::after {
+			content: "";
+			width: 100%;
+			height: 1px;
+			background: rgba(255, 255, 255, 0.1);
+			position: absolute;
+			bottom: -1rem;
+			left: 0;
+		}
+	}
+	.shadow--card--title {
+		height: 15px;
+		div {
+			width: 100%;
+			height: 100%;
+			background: #535353;
+			display: inline-block;
+			font-size: 1.25rem;
+			font-weight: 600;
+			margin-top: 1.75rem;
+			transition: all 0.4s;
+			animation: animate 4s ease-in-out infinite;
+		}
+	}
+	.card--btn {
+		width: 100%;
+		margin-top: 2.06rem;
+		button {
+			width: 100%;
+			height: 50px;
+			padding: 0.8125rem 0.81rem;
+			border-radius: 0.875rem;
+			font-size: 1rem;
+			font-weight: 400;
+			border: 3px solid rgba(255, 255, 255, 0.5);
+			background: transparent;
+			color: white;
+			cursor: not-allowed;
+			position: relative;
+			z-index: 1;
+			overflow: hidden;
+			animation: animate 4s ease-in-out infinite;
+		}
+	}
+}
+@keyframes animate {
+	0% {
+		background-color: rgba(165, 165, 165, 0.1);
+	}
+	50% {
+		background-color: rgba(165, 165, 165, 0.3);
+	}
+	100% {
+		background-color: rgba(165, 165, 165, 0.1);
+	}
+}
+// @keyframes animate {
+// 	0% {
+// 		opacity: 0;
+// 	}
+// 	10% {
+// 		opacity: 0.1;
+// 	}
+// 	20% {
+// 		opacity: 0.2;
+// 	}
+// 	30% {
+// 		opacity: 0.3;
+// 	}
+// 	40% {
+// 		opacity: 0.4;
+// 	}
+// 	50% {
+// 		opacity: 0.5;
+// 	}
+// 	60% {
+// 		opacity: 0.6;
+// 	}
+// 	70% {
+// 		opacity: 0.7;
+// 	}
+// 	80% {
+// 		opacity: 0.8;
+// 	}
+// 	90% {
+// 		opacity: 0.9;
+// 	}
+// 	100% {
+// 		opacity: 1;
+// 	}
+// }

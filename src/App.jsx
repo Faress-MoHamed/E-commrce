@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Shop from "./pages/shop/Shop";
@@ -10,24 +10,26 @@ import "swiper/css";
 
 import { MobileHandlerProvider } from "./utils/mobileHandler";
 import Error from "./components/Error/Error";
-import ProductDetiails from "./components/ProductDetails/ProductDetiails";
-import { useDispatch } from "react-redux";
-import { getAllProduct } from "./reduxToolkit/slices/GetAllProducts";
 import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ProductDetiails from "./pages/ProductDetails/ProductDetiails";
 
 const App = () => {
-	const dispatch = useDispatch();
-	const getAll = async () => {
-		const product = await dispatch(getAllProduct());
-		return product.payload;
-	};
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				staleTime: 0,
+			},
+		},
+	});
 
-	const Routing = createBrowserRouter([
+	const Routing = createHashRouter([
 		{
 			path: "/",
 			element: <LayOut />,
 			children: [
-				{ index: true, loader: getAll, element: <Home /> },
+				{ index: true, element: <Home /> },
 				{ path: "/about", element: <About /> },
 				{ path: "/shop", element: <Shop /> },
 				{ path: "/contact", element: <Contact /> },
@@ -39,16 +41,10 @@ const App = () => {
 		},
 	]);
 
-	// useEffect(() => {
-	// 	setIsLoading(true);
-	// 	setTimeout(() => {
-	// 		setIsLoading(false);
-	// 	}, 4000);
-	// }, []);
 	return (
-		<>
+		<QueryClientProvider client={queryClient}>
+			<ReactQueryDevtools initialIsOpen={false} />
 			<MobileHandlerProvider>
-				{/* {isLoading && <Loader />} */}
 				<RouterProvider router={Routing} />
 				<Toaster
 					position="top-right"
@@ -61,8 +57,7 @@ const App = () => {
 					}}
 				/>
 			</MobileHandlerProvider>
-		</>
+		</QueryClientProvider>
 	);
 };
-
 export default App;

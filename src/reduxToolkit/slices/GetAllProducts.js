@@ -6,8 +6,6 @@ const initialState = {
 	productDetails: {},
 	categories: [],
 	filterCategories: {},
-	isLoading: false,
-	errors: null,
 };
 
 const getAllProduct = createAsyncThunk("get-all-products", async () => {

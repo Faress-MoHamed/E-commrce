@@ -1,10 +1,22 @@
-const FilterCategoryItem = ({ data, id, activeIndex }) => {
+import { useQueryClient } from "@tanstack/react-query";
+
+const FilterCategoryItem = ({
+	data,
+	activeIndex,
+	index,
+}) => {
 	const { title } = data;
-	const img =data?.image?.data[0]?.attributes?.url;
+	const QueryClient = useQueryClient();
+	const img = data?.image?.data[0]?.attributes?.url;
 	return (
 		<div
+			onClick={() =>
+				QueryClient.invalidateQueries({
+					queryKey: ["filterCategories"],
+				})
+			}
 			className={`filterCategory--container ${
-				activeIndex === id ? "active" : ""
+				activeIndex === index ? "active" : ""
 			}`}
 		>
 			<div className="filterItem--image">
@@ -22,7 +34,7 @@ const FilterCategoryItem = ({ data, id, activeIndex }) => {
 						/>
 					</svg>
 				</div>
-				<img  src={img} alt="filter--item" />
+				<img src={img} alt="filter--item" />
 			</div>
 			<p className="filterItem--title">{title}</p>
 		</div>

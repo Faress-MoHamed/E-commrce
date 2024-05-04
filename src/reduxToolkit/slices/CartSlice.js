@@ -12,7 +12,6 @@ const CartSlice = createSlice({
 			const newItem = action.payload;
 			newItem.totalPrice = +newItem.price * +newItem.quantity;
 			const exact = prevState.Cart.filter((el) => el.slug === newItem.slug);
-			console.log(newItem.slug, exact);
 			if (exact.length === 0) prevState.Cart.push(newItem);
 			else prevState.error.push(new Error());
 		},

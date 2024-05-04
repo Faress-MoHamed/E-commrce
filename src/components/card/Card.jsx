@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 import { AddCart } from "../../reduxToolkit/slices/CartSlice";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+import { Circles } from "react-loader-spinner";
+import { useQueryClient } from "@tanstack/react-query";
 
-const Card = ({ data }) => {
+const Card = ({ data, isLoading }) => {
 	const dispatch = useDispatch();
+	const queryClient = useQueryClient();
+
 	const img = data?.image?.data?.attributes.url;
 	function handleClick() {
 		const newItem = {
@@ -32,7 +36,7 @@ const Card = ({ data }) => {
 					</div>
 				)}
 				<div className="image">
-					<img src={img} alt="produx-img" />
+					<img src={img} alt={data?.description} />
 				</div>
 				<div className="card--price">
 					<div className="price">
@@ -48,7 +52,16 @@ const Card = ({ data }) => {
 					</div>
 				</div>
 				<div className="card--title">
-					<Link to={`../shop/${data?.slug}`}>{data?.name}</Link>
+					<Link
+						onClick={() =>
+							queryClient.invalidateQueries({
+								queryKey: ["productDetails"],
+							})
+						}
+						to={`../shop/${data?.slug}`}
+					>
+						{data?.name}
+					</Link>
 				</div>
 				<div className="card--option">
 					<div className="option">
@@ -100,16 +113,6 @@ const Card = ({ data }) => {
 				</div>
 				<div className="card--btn">
 					<button onClick={handleClick}>Add To Cart</button>
-					<Toaster
-						position="top-right"
-						toastOptions={{
-							style: {
-								fontSize: "1.25rem",
-								width: 750,
-								heigh: 500,
-							},
-						}}
-					/>
 				</div>
 			</div>
 		)
