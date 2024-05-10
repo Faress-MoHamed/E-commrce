@@ -28,7 +28,8 @@
 }
 @font-face {
 	font-family: "Fiber";
-	src: url(/fonts/fibre-font.otf);
+	src: url(/fonts/fibre-font.otf) format("opentype");
+	font-display: swap;
 }
 html,
 body {
